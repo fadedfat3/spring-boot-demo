@@ -71,7 +71,9 @@ public class AopLog {
 	 */
 	@Around("log()")
 	public Object aroundLog(ProceedingJoinPoint point) throws Throwable {
+	    log.info("around device before proceed");
 		Object result = point.proceed();
+		log.info("around device after proceed");
 		log.info("【返回值】：{}", JSONUtil.toJsonStr(result));
 		return result;
 	}
